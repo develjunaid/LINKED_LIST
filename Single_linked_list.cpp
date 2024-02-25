@@ -76,7 +76,7 @@ void print(Record **head){
 
 void Delete(Record ** head){
 	Record*curr=*head;
-	Record*prev;
+	Record*prev=*head;
 	cout<<"ENTER A ROLL NUMBER TO DELETE";
 	cout<<endl;
 	int toDel;
@@ -84,15 +84,15 @@ void Delete(Record ** head){
 		if(curr->rollNo==toDel){
 			*head=curr->next;
 			free(curr);
+			curr=*head;
+			return;				
 		}
-		
-		else{
 			curr=curr->next;
-			prev=curr;
 			while(curr!=NULL){
 				if(curr->rollNo==toDel){
 					prev->next=curr->next;
 					free(curr);
+					beak;
 					
 				}
 				else{
@@ -103,7 +103,7 @@ void Delete(Record ** head){
 				
 		}
 	
-}
+
 void deleteAll(Record ** head){
 	Record *curr=*head;
 	while(curr!=NULL){
