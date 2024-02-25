@@ -78,12 +78,13 @@ void Delete(Record ** head){
 	cout<<"Enter a number to delete"<<endl;
 	cin>>toDel;
 	Record*curr=*head;
-	if((*head)->rollNo==toDel){
+	if(curr->rollNo==toDel){
 		*head=(*head)->next;
 		free(curr);
+		curr=*head;
 		return;
 	}
-	if((*head)->next==*head){
+	if(curr->next==*head){
 		free(*head);
 		*head=NULL;
 		return;
