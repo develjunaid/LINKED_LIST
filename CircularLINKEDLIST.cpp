@@ -119,9 +119,7 @@ void Delete(Record ** head){
 	Record*last=*head;
 	while(last->next!=*head){
 		last=last->next;  //last element = last
-	}
-	
-	
+	}	
 	//agr head m srf 2 element hu 
 	if((*head)->rollNo==toDel){
 		*head=(*head)->next;
