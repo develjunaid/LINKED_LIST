@@ -71,33 +71,50 @@ void print(Record ** head){
 
 void Delete(Record ** head){
 	if(*head==NULL){
-		cout<<"list is empty";
+		cout<<"list is empty"<<endl;
 		return ;
 	}
 	int toDel;
 	cout<<"Enter a number to delete"<<endl;
 	cin>>toDel;
 	Record*curr=*head;
-	if(curr->rollNo==toDel){
-		*head=(*head)->next;
-		free(curr);
-		curr=*head;
-		return;
+	if(*head==NULL){
+		cout<<"list is empty"<<endl;	
 	}
-	if(curr->next==*head){
+	if((*head)->next==NULL){
+		//*head=curr;
+		(*head)->prev = NULL;
 		free(*head);
+		//curr=*head;
 		*head=NULL;
 		return;
 	}
-		while(curr!=NULL){
-		if(curr->rollNo=toDel){
+	if (curr->rollNo == toDel){
+        *head = (*head)->next;
+        (*head)->prev = NULL;
+        free(curr);
+        curr = *head;
+    }
+    Record*last=*head;
+    while(last->next!=NULL){
+    	last=last->next;
+    	
+	}
+	if(toDel==last->rollNo){
+		last->prev->next=NULL;
+		free(last);
+
+	}
+
+	curr=curr->next;
+	while(curr!=NULL){
+		if(curr->rollNo==toDel){
 			curr->prev->next=curr->next;
 			curr->next->prev=curr->prev;
-			free(curr);
 		}
 		curr=curr->next;
-		
 	}
+
 	
 }
 void deleteAll(Record ** head){
